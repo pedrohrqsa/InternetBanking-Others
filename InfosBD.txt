@@ -1,0 +1,46 @@
+Cliente:
+	$Informações Pessoais -> ID, CPF, RG, Órgão Emissor, Data_Nasc, Nome, Sobrenome, Nacionalidade, Naturalidade, %Endereços, %Infos_Familiares, %Contatos.
+	Histórico de Informações alteradas* -> RG, Órgão Emissor, Nome, Sobrenome, %Endereços, %Contatos.
+	#Endereços* -> Logradouro, Número, Complemento, Bairro, Estado, CEP, FlagStatus.
+	Informações Familiares* (Nome do pai não obrigatório) -> Parentesco(Mãe, Pai(Opcional), Filhos(Opcional)), Nome, Sobrenome. 
+	#Contatos* -> E-mails, Telefones(Opcional), Celular, Proprietário, FlagStatus.
+
+Banco:
+	Contas** -> Tabela Abaixo.
+	Agências* -> Número, E-Mail_SAC, Telefone.
+	Transações* -> ID(A_I), Serviço**, Data. 
+	$Infomações do banco -> Nome Fantasia, CNPJ, #%Endereço, ISPB, Código do Banco.
+	(Não há funcionários por conta das regras pré-estabelecidas)
+	
+Contas:	
+	Nº Conta (A_I)
+	%Nº Agência
+	Senha de transações
+	Senha de login
+	Histórico de Informações alteradas* -> Senhas, Datas de alterações de Status.
+	Data de criação
+	#Status
+
+	
+
+
+
+
+*: Vira uma tabela própria
+**: Vira uma tabela com mais tabelas
+#: Flag de ativo e inativo
+$: Mais de uma informação a ser tratada
+%: FK
+(A_I): Auto Increment
+
+
+USAR TRELLO PARA ATIVIDADES
+QUEBRAR AS ATIVIDADES
+DEFINIÇÃO DE QUEM VAI ATUAR ONDE
+REPLANEJAR ALTERAÇÕES NO BANCO (PARA FUTURAS ALTERAÇÕES)
+
+A PARTIR DO DIA 25 - APRESENTAÇÃO
+PROTÓTIPOS DE TELA
+VISUAL E CORES
+REGRAS DE NEGÓCIO
+MELHORIAS DE FEEDBACK
