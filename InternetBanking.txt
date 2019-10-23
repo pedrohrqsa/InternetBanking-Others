@@ -1,0 +1,86 @@
+O que é o sistema?
+
+Uma aplicação de Internet Banking, feita em Angular, alimentada pelas APIs desenvolvidas em .NET.
+
+
+Funções em ordem cronológica:
+
+Abertura de conta:
+
+Tela de cadastro que solicita o "input" das informações do cliente. (validação).
+Verifica se já exite uma conta com status de desativado para o mesmo cliente.
+Caso não haja, solicita o "upload" de uma imagem do RG para verificação. (validação do RG para v2). (validação).
+Nas primeiras versões as contas serão abertas na hora, para efeitos de simulação. (validação).
+Pop-Up com a agência, conta e solicita o cadastro da senha para transações.
+Gera uma conta com status de ativa.
+Redireciona o usuário para a tela de login.
+
+Tela de Login:
+
+Solicita o CPF e a senha alfa-númerica. (validação)
+**Esqueci minha senha
+Caso o CPF esteja cadastrado e tenha a senha igual:
+Redireciona para o "dashboard"
+
+Index:
+
+Tela com as informações básicas da conta do cliente, aba do extrato, aba para transações, aba de perfil.
+	
+	Aba Conta: Mostra o nº da conta, o nº da agência, o saldo atual.
+	Aba Extrato: Mostra as transações, com data, uma descrição e o valor.
+	Aba Transações: Mostra as 3 transações possíveis e redireciona ao selecionar.
+	Aba Perfil: Mostra as informações mais detalhadas e opção de atualizá-las.
+
+Transações:
+
+Depósito: 
+
+Tela com um Input que verifica se o valor inserido é positivo (valores negativos não serão aceitos). 
+Solicita a senha númerica de transação. (validação).
+Solicita a confirmação.
+O valor é adicionado ao saldo atual.
+A transação é salva e adicionada ao extrato.
+
+Saque:
+
+Tela com um Input que verifica se o valor inserido é positivo (valores negativos não serão aceitos).
+Solicita a senha númerica de transação. (validação).
+Verifica se o saque deixará o saldo negativo (Saldos negativos não serão aceitos).
+Solicita a confirmação.
+O valor é subtraido do saldo atual.
+A transação é salva e adicionada ao extrato.
+
+Transferência (entre contas internas):
+
+Tela com um input que pede a agência e conta do destinatário da transferência. (validação).
+Tela com um Input que verifica se o valor inserido é positivo (valores negativos não serão aceitos).
+Solicita a senha númerica de transação. (validação).
+Verifica se a transferência deixará o saldo negativo (Saldos negativos não serão aceitos).
+Solicita a confirmação.
+O valor é subtraido do saldo atual do remetente.
+O valor é adicionado ao saldo atual do destinatário.
+A transação é salva e adicionada aos extratos das duas contas.
+
+Extrato:
+
+Retorna uma lista com os dados buscados no histórico de transações.
+Mostra as datas, a descrição da transação e o valor.
+
+Fechamento da conta:
+
+Verifica se há saldo na conta.
+Caso haja, informa a necessidade do saque desse saldo restante.
+Caso não haja, solicita a senha númerica de transação.
+Solicita confirmação.
+Altera o status da conta para inativa.
+
+
+**UPDATES**
+
+- Registro de Alterações
+- Tabelas do BD:
+	conta: tipo de conta, data de abertura, status (possibilita expansão sem maiores alterações).
+	contaCorrente: numero da conta, numero agencia, saldo, senhas.
+	enderecos: status de ativo ou inativo para armazenar histórico, data de alteração.
+	senhas: status de ativo ou inativo para armazenar histórico, data de alteração.
+	
