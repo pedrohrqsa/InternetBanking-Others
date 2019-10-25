@@ -1,0 +1,45 @@
+-----------------------------------------------------------
+
+> Motivação para a ideia
+	> Utilizar os conhecimentos absorvidos pelos cursos realizados
+
+-------------------- ANÁLISE DO ESCOPO --------------------
+
+> Histórias de Usuário
+	> Uso do cliente
+
+> Regras de Negócio
+
+> Funcionalidades
+	> Abertura de conta
+		> Casos de uso
+		> Modo de integração
+
+	> Login
+		> Casos de uso
+		> Modo de integração
+
+	> Serviços
+		> Casos de uso
+		> Modo de integração
+
+	> Fechamento de conta
+		> Casos de uso
+		> Modo de integração
+
+> Quebra das atividades
+	> Estimativas
+	> Segregação de responsabilidades
+
+> Datas de entrega
+	> Motivo de cada data
+
+> Protótipos
+	> Explicação
+
+> Informações do B.D.
+	> Explicação
+
+> O que esperamos
+
+> Dificuldades que tivemos
