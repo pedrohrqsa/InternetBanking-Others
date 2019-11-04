@@ -1,0 +1,112 @@
+USE master;  
+GO  
+CREATE DATABASE Pedro  
+
+ON   
+( NAME = base_dat,  
+    FILENAME = 'C:\Users\pedrohsilva\Documents\BaseDeDados\base.mdf',  
+    SIZE = 10,  
+    MAXSIZE = 50,  
+    FILEGROWTH = 5 )  
+LOG ON  
+( NAME = base_log,  
+    FILENAME = 'C:\Users\pedrohsilva\Documents\BaseDeDados\base.ldf',  
+    SIZE = 5MB,  
+    MAXSIZE = 25MB,  
+    FILEGROWTH = 5MB ) ;  
+GO  
+
+
+
+
+--drop table usuarios
+
+create table usuarios (
+UsuarioId int identity(1,1) not null, -- incrementa començando de 1 em 1 
+nome varchar(50),
+senha varchar(10), 
+email varchar(50)
+);
+
+insert into usuarios ( nome, senha, email) values ( 'Pedro Henrique', 'henrique', 'pedro@ig.com');
+insert into usuarios ( nome, senha, email) values ( 'L. Marinelli', 'luiz', 'luiz@ig.com');
+insert into usuarios ( nome, senha, email) values ( 'Lucas Santos', 'lucas', 'lucas@ig.com');
+
+insert into usuarios ( nome, senha, email) values ( 'Luiz Ed', 'luizz', 'luiz@ig.com');
+insert into usuarios ( nome, senha, email) values ( 'Guilherme', 'guui', 'guilherme@ig.com');
+
+insert into usuarios ( nome, senha, email) values ( 'Guilherme', 'guui', 'guilherme@ig.com');
+
+select * from usuarios;
+
+update usuarios set nome = 'L. Marinelli'
+where UsuarioId = 2
+
+delete from usuarios where UsuarioId=7
+
+update usuarios set nome ='p', senha =123  where UsuarioId = 1;
+
+--==============================================================================
+-- DROP TABLE LOGIN
+-- DELETE FROM LOGIN
+
+CREATE TABLE LOGIN(
+	ID_LOGIN		INT				PRIMARY KEY	IDENTITY(1,1)								NOT NULL,
+	CPF			VARCHAR(11)		FOREIGN KEY(CPF) REFERENCES CLIENTE(CPF)		NOT NULL,
+	SENHA		VARCHAR(15)																NOT NULL,
+);
+
+-- DELETE FROM CLIENTE
+-- DROP TABLE CLIENTE
+
+CREATE TABLE CLIENTE(
+	ID_CLIENTE				int			NOT NULL		PRIMARY KEY IDENTITY (1,1),
+	CPF					VARCHAR(11)			NOT NULL							UNIQUE,
+	RG					VARCHAR(9)			NOT NULL,	
+	ORGAOEMISSOR		VARCHAR(5)			NOT NULL,
+	DTNASCIMENTO			VARCHAR(10)			NOT NULL,
+	NOME					VARCHAR(20)			NOT NULL,
+	SOBRENOME			VARCHAR(30)			NOT NULL,
+	NACIONALIDADE		VARCHAR(20)			NOT NULL,
+	NATURALIDADE			VARCHAR(20)			NOT NULL,
+	ENDERECO				VARCHAR(80)			NOT NULL,
+	INFOFAMILIARES		VARCHAR(50)			NOT NULL,
+	CONTATO				VARCHAR(50)			NOT NULL
+ );
+
+
+	INSERT INTO CLIENTE(
+	CPF,
+	RG,
+	ORGAOEMISSOR,
+	DTNASCIMENTO,
+	NOME,
+	SOBRENOME,
+	NACIONALIDADE,
+	NATURALIDADE,
+	ENDERECO,
+	INFOFAMILIARES,
+	CONTATO
+)
+VALUES
+(
+	'47958664818',
+	'547858887',
+	'SSP',
+	'1998/11/22',
+	'Pedro',
+	'Henrique',
+	'Brasileira',
+	'São Paulo',
+	'Rua iacri, Nº 56',
+	'teste',
+	'11 5555 4444'
+);
+
+
+INSERT INTO LOGIN (CPF, SENHA)VALUES('47958664818','TESTE');
+
+
+SELECT * FROM CLIENTE;
+SELECT * FROM LOGIN;
+
