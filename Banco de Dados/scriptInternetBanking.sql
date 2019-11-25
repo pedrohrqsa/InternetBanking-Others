@@ -168,20 +168,6 @@ CREATE TABLE Transacao(
 ---------------------------------------------------------------------------------------------------------------------------
 
 
--- DROP TABLE ContaCorrente;
--- DELETE FROM ContaCorrente;
-CREATE TABLE ContaCorrente(
-	idContaCorrente						    INT										NOT NULL	IDENTITY(1, 1)		 PRIMARY KEY CLUSTERED,
-	idTransacao							    INT										NOT NULL,
-	numConta							    INT										NOT NULL,
-	saldo								    VARCHAR(6)  DEFAULT(0)					NOT NULL,
-	CONSTRAINT FKTransacaoContaCorrente	    FOREIGN KEY (idTransacao)				REFERENCES Transacao(idTransacao)
-);
-
-
----------------------------------------------------------------------------------------------------------------------------
-
-
 -- DROP TABLE Conta;
 -- DELETE FROM Conta;
 CREATE TABLE Conta(
@@ -194,9 +180,24 @@ CREATE TABLE Conta(
 	dtCriacao							    DATE									NOT NULL,
 	flagAtivo							    CHAR(1)	DEFAULT(1)						NOT NULL,
 	CONSTRAINT FKClienteConta			    FOREIGN KEY (idCliente)					REFERENCES Cliente (idCliente),
-	CONSTRAINT FKContaCorrenteConta		    FOREIGN KEY (idContaCorrente)			REFERENCES ContaCorrente (idContaCorrente),
 	CONSTRAINT FKAgenciaConta			    FOREIGN KEY (idAgencia)					REFERENCES Agencia (idAgencia),
 	CONSTRAINT FKBancoContaConta		    FOREIGN KEY (idBanco)					REFERENCES Banco (idBanco)
+);
+
+
+---------------------------------------------------------------------------------------------------------------------------
+
+
+-- DROP TABLE ContaCorrente;
+-- DELETE FROM ContaCorrente;
+CREATE TABLE ContaCorrente(
+	idContaCorrente						    INT										NOT NULL	IDENTITY(1, 1)		 PRIMARY KEY CLUSTERED,
+	idTransacao							    INT										NOT NULL,
+	idConta									INT										NOT NULL,
+	numConta							    INT										NOT NULL,
+	saldo								    VARCHAR(6)  DEFAULT(0)					NOT NULL,
+	CONSTRAINT FKTransacaoContaCorrente	    FOREIGN KEY (idTransacao)				REFERENCES Transacao(idTransacao),
+	CONSTRAINT FKContaContaCorrente			FOREIGN KEY (idConta)					REFERENCES Conta(idConta)
 );
 
 
@@ -238,11 +239,11 @@ VALUES (1, 1111111111, 1111111112);
 INSERT INTO Transacao (idSaque, idDeposito, idTransferencia, dtTransacao, valor)
 VALUES (1, 1, 1, '01-01-2000', 100);
 
-INSERT INTO ContaCorrente (idTransacao, numConta, saldo)
-VALUES (1, 1111111111, 1000);
-
 INSERT INTO Conta (idCliente, idContaCorrente, idAgencia, idBanco, senhaTransacoes, dtCriacao, flagAtivo)
 VALUES (1, 1, 1, 1, 1111, '2000-01-01', 1);
+
+INSERT INTO ContaCorrente (idTransacao, numConta, saldo)
+VALUES (1, 1111111111, 1000);
 */
 
 
