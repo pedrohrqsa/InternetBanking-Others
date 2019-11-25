@@ -173,7 +173,6 @@ CREATE TABLE Transacao(
 CREATE TABLE Conta(
 	idConta								    INT										NOT NULL	IDENTITY(1, 1)		 PRIMARY KEY CLUSTERED,
 	idCliente							    INT										NOT NULL,
-	idContaCorrente						    INT										NOT NULL,
 	idAgencia							    INT										NOT NULL,
 	idBanco								    INT										NOT NULL,
 	senhaTransacoes						    VARCHAR(4)								NOT NULL,
